@@ -27,5 +27,12 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: true
     });
 
+    Employee.associate = (models) => {
+        Employee.belongsTo(models.branches, {
+            foreignKey: 'branch_id',
+            as: 'branch'
+        });
+    };
+
     return Employee;
 };

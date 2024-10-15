@@ -30,10 +30,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             FOREIGNKEYS: true
         },
-        service_id: {
-            type: DataTypes.INTEGER,
-            FOREIGNKEYS: true
-        },
         stylist_id: {
             type: DataTypes.INTEGER,
             FOREIGNKEYS: true
@@ -42,6 +38,17 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'bookings',
         timestamps: true
     });
+
+    Booking.associate = (models) => {
+        Booking.belongsTo(models.customers, {
+            foreignKey: 'customer_id',
+            as: 'customer'
+        });
+        Booking.belongsTo(models.stylists, {
+            foreignKey: 'stylist_id',
+            as: 'stylist'
+        });
+    };
 
     return Booking;
 }
