@@ -1,10 +1,12 @@
 {
   "dependencies": {
-    "concurrently": "^9.0.1"
+    "concurrently": "^9.0.1",
+    "dotenv": "^16.4.5"
   },
   "scripts": {
-  "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
-  "start:frontend": "cd client && npm start",
-  "start:backend": "cd server && npm start"
+    "install": "cd client && npm install && cd ../server && npm install",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "cd client && npm start",
+    "start:backend": "cd server && npm start"
   }
 }
